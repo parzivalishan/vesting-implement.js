@@ -1,0 +1,19 @@
+{
+  "name": "vesting-implement",
+  "description": "implement a Common Form stock vesting provision",
+  "version": "1.0.3",
+  "author": "ISHAN <ishan43hours@gmail.com> (t.me/crypticishan)",
+  "dependencies": {
+    "deep-equal": "~1.0.0",
+    "ishanvesting": "git+https://github.com/parzivalishan/ishanvesting.js" // Updated dependency
+  },
+  "devDependencies": {
+    "tape": "~4.0.1",
+    "vesting-commonform": "~1.0.0"
+  },
+  "license": "MIT",
+  "repository": "parzivalishan/vesting-implement.js",
+  "scripts": {
+    "test": "tape test.js"
+  }
+}

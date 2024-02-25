@@ -1,0 +1,30 @@
+var cliff = require('vesting-commonform/cliff')
+var deepEqual = require('deep-equal')
+var straight = require('vesting-commonform/straight')
+var vesting = require('vesting')
+
+var fractionRE = /^1\/(\d+)(st|nd|th)$/
+
+function parseFraction(fraction) {
+  var match = fractionRE.exec(fraction)
+  return parseInt(match[1]) }
+
+var ordinalRE = /^(\d+)(st|nd|th)$/
+
+function parseOrdinal(ordinal) {
+  var match = ordinalRE.exec(ordinal)
+  return parseInt(match[1]) }
+
+function vestingImplement(form, blanks) {
+  if (deepEqual(form, straight)) {
+    return vesting.call(
+      null,
+      parseFraction(blanks['monthly fraction'])) }
+  else if (deepEqual(form, cliff)) {
+    return vesting.call(
+      null, 
+      parseFraction(blanks['monthly fraction']),
+      parseFraction(blanks['cliff fraction']),
+      parseOrdinal(blanks['cliff anniversary'])) } }
+
+module.exports = vestingImplement
